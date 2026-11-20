@@ -10,18 +10,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     :root {
-      --green-bg: #32d705;
-      --pill-green: #69df49;
-      --yellow-bg: #f6f604;
-      --ink: #111111;
+      --green-bg: #2fd602;
+      --yellow-bg: #f6f600;
     }
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC", sans-serif;
       background: #000;
       overflow: hidden;
     }
@@ -37,405 +38,92 @@
     .green-screen { background: var(--green-bg); }
     .yellow-screen { background: var(--yellow-bg); }
 
+    /* 頂部黑色導覽列 */
     .topbar {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0b0b0b;
-      color: #f2f2f2;
-      height: 54px;
-      padding: 0 14px;
-      font-weight: 600;
+      background: #0a0a0a;
+      color: #f3f3f3;
+      height: 56px;
       font-size: 16px;
-      letter-spacing: 0.3px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      flex-shrink: 0;
     }
     .circle-menu-btn {
       position: absolute;
-      left: 14px;
-      width: 40px;
-      height: 40px;
+      left: 16px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: #2b2b2b;
-      color: #f5f5f5;
-      border: none;
-      font-size: 18px;
-      line-height: 1;
+      background: linear-gradient(180deg, #3a3a3a 0%, #1d1d1d 100%);
+      border: 1px solid #484848;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 4px;
+      padding: 0;
       cursor: pointer;
+    }
+    .circle-menu-btn span {
+      display: block;
+      width: 18px;
+      height: 2.2px;
+      background: #ffffff;
+      border-radius: 1px;
     }
     .back-pill-btn {
       position: absolute;
       left: 14px;
-      background: #262626;
+      background: #232323;
       color: #f5f5f5;
-      border: none;
-      border-radius: 10px;
-      padding: 7px 12px;
+      border: 1px solid #3c3c3c;
+      border-radius: 12px;
+      padding: 6px 12px;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
     }
 
+    /* 右上 iOS 版本與上方狀態文字 */
     .ios-tag {
       text-align: right;
-      padding: 5px 12px 0;
+      padding: 4px 10px 0 0;
       font-size: 12px;
-      font-weight: 500;
-      color: var(--ink);
+      font-weight: 400;
+      color: #162214;
       font-variant-numeric: tabular-nums;
+      line-height: 1.2;
     }
     .status-sub {
       text-align: center;
       font-size: 14px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-top: 6px;
+      font-weight: 500;
+      color: #162214;
+      margin-top: 2px;
     }
+
+    /* 主體區 */
     .main-body {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 26px 24px 14px;
+      padding: 0 28px 10px;
     }
-    .top-cluster {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 10px;
-    }
-    .camp-title {
-      font-size: 52px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.15;
-      letter-spacing: 2px;
-      margin-bottom: 34px;
-    }
-    .live-clock {
-      font-size: 31px;
-      font-weight: 700;
-      color: var(--ink);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.4px;
-      margin-bottom: 20px;
-    }
-    .pill-row {
-      width: 100%;
-      background: var(--pill-green);
-      border-radius: 8px;
-      padding: 11px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 12px;
-    }
-    .dot-green { width: 13px; height: 13px; border-radius: 50%; background: #149e14; flex-shrink: 0; }
-    .dot-red { width: 13px; height: 13px; border-radius: 50%; background: #e01b1b; flex-shrink: 0; }
-
-    .bottom-cluster {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .white-label-btn {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      background: #f4f4f4;
-      border: none;
-      border-radius: 12px;
-      padding: 16px 14px 15px;
-      margin-bottom: 18px;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-    /* 模擬四個角落淡色徽章紋路 */
-    .corner-emblem {
-      position: absolute;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 1.5px dashed rgba(130, 125, 110, 0.32);
-      background: radial-gradient(circle, rgba(160,150,125,0.16) 0%, rgba(160,150,125,0.02) 70%);
-      pointer-events: none;
-    }
-    .emblem-tl { top: 4px; left: 8px; }
-    .emblem-tr { top: 4px; right: 8px; }
-    .emblem-bl { bottom: 4px; left: 8px; }
-    .emblem-br { bottom: 4px; right: 8px; }
-
-    .white-label-line1, .white-label-line2 {
-      position: relative;
-      z-index: 1;
-      font-size: 21px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.38;
-      letter-spacing: 0.5px;
-    }
-    .white-label-serial {
-      position: relative;
-      z-index: 1;
-      font-size: 31px;
-      font-weight: 800;
-      color: #0b0b0b;
-      margin-top: 2px;
-      letter-spacing: 0.8px;
-      font-variant-numeric: tabular-nums;
-    }
-    .footer-meta {
-      text-align: center;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.48;
-      font-variant-numeric: tabular-nums;
-    }
-    .footer-warn {
-      color: #e01b1b;
-      font-weight: 700;
-    }
-
-    /* 選擇彈窗 */
-    .modal-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.32);
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      z-index: 20;
-    }
-    .modal-backdrop.open { display: flex; }
-    .modal-box {
-      width: 100%;
-      background: #71e54b;
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
-    }
-    .modal-title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
-    .modal-sub { font-size: 14px; color: var(--ink); margin-bottom: 14px; }
-    .modal-btn {
-      width: 100%;
-      background: rgba(255,255,255,0.36);
-      border: none;
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-    .modal-btn:last-child { margin-bottom: 0; }
-
-    /* QR 畫面 */
-    .qr-body {
+    .camp-wrap {
       flex: 1;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 24px 20px;
+      width: 100%;
     }
-    .qr-action-title {
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 24px;
-      letter-spacing: 1px;
-    }
-    .qr-box {
-      background: #ffffff;
-      padding: 10px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #qrcode img, #qrcode canvas {
-      display: block;
-      width: 224px !important;
-      height: 224px !important;
-    }
-    .refresh-btn {
-      margin-top: 16px;
-      margin-bottom: 22px;
-      background: none;
-      border: none;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--ink);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-    }
-    .qr-meta {
-      text-align: center;
-      font-size: 14px;
+    .camp-title {
+      font-size: 56px;
       font-weight: 500;
-      color: var(--ink);
-      line-height: 1.65;
-      font-variant-numeric: tabular-nums;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 主畫面 -->
-  <section id="mainScreen" class="screen green-screen active">
-    <div class="topbar">
-      <button class="circle-menu-btn" onclick="editID()">☰</button>
-      <div>國軍 MDM V9.1</div>
-    </div>
-
-    <div class="ios-tag">iOS:27.2</div>
-    <div class="status-sub">已上鎖，可進入此管制營區</div>
-
-    <div class="main-body">
-      <div class="top-cluster">
-        <div class="camp-title" id="campName">武漢營區</div>
-        <div class="live-clock" id="liveClock">115/11/21 03:42:00</div>
-
-        <div class="pill-row">
-          <span class="dot-green"></span>
-          <span>上鎖：進入管制模式</span>
-        </div>
-        <div class="pill-row">
-          <span class="dot-red"></span>
-          <span>解鎖：離開管制模式</span>
-        </div>
-      </div>
-
-      <div class="bottom-cluster">
-        <button class="white-label-btn" onclick="openModal()">
-          <span class="corner-emblem emblem-tl"></span>
-          <span class="corner-emblem emblem-tr"></span>
-          <span class="corner-emblem emblem-bl"></span>
-          <span class="corner-emblem emblem-br"></span>
-          <div class="white-label-line1">國軍營內民用通信</div>
-          <div class="white-label-line2">資訊器材管制標籤</div>
-          <div class="white-label-serial" id="labelSerial">C228854719</div>
-        </button>
-
-        <div class="footer-meta">
-          <div>上鎖時間：<span id="lockTime">115/11/15 22:51:49</span></div>
-          <div>設定檔：<span id="configVer">V3.1 (05/10 12:33:44)</span></div>
-          <div class="footer-warn">仿冒必究</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 選擇彈窗 -->
-  <div id="actionModal" class="modal-backdrop" onclick="closeModal()">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <div class="modal-title">提示</div>
-      <div class="modal-sub">請選擇產生 QRCode 類型</div>
-      <button class="modal-btn" onclick="goQR('進入營區')">進入營區</button>
-      <button class="modal-btn" onclick="goQR('離開營區')">離開營區</button>
-      <button class="modal-btn" onclick="closeModal()">取 消</button>
-    </div>
-  </div>
-
-  <!-- QRCode 畫面 -->
-  <section id="qrScreen" class="screen yellow-screen">
-    <div class="topbar">
-      <button class="back-pill-btn" onclick="backMain()">‹ 返回</button>
-      <div>門禁 - QRCode</div>
-    </div>
-
-    <div class="qr-body">
-      <div class="qr-action-title" id="qrActionTitle">進入營區</div>
-      <div class="qr-box">
-        <div id="qrcode"></div>
-      </div>
-      <button class="refresh-btn" onclick="refreshQR()">
-        <span>↻</span>
-        <span>更新 QRCode</span>
-      </button>
-
-      <div class="qr-meta">
-        <div>時間來源： 手機</div>
-        <div>來源時間：<span id="qrSourceTime">115/11/21 03:42:00</span></div>
-        <div>上鎖時間：<span id="qrLockTime">115/11/15 22:51:49</span></div>
-        <div>版本號：MDM 9.1 Build 1</div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    let userID = localStorage.getItem("custom_id") || "J123219819";
-    let qrInstance = null;
-
-    function formatMinguo(date = new Date()) {
-      const rocYear = date.getFullYear() - 1911;
-      const pad = (n) => String(n).padStart(2, "0");
-      return `${rocYear}/${pad(date.getMonth() + 1)}/${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
-    }
-
-    function updateClock() {
-      document.getElementById("liveClock").textContent = formatMinguo(new Date());
-    }
-
-    function openModal() {
-      document.getElementById("actionModal").classList.add("open");
-    }
-
-    function closeModal() {
-      document.getElementById("actionModal").classList.remove("open");
-    }
-
-    function goQR(action) {
-      closeModal();
-      document.getElementById("qrActionTitle").textContent = action;
-      document.getElementById("mainScreen").classList.remove("active");
-      document.getElementById("qrScreen").classList.add("active");
-      refreshQR();
-    }
-
-    function backMain() {
-      document.getElementById("qrScreen").classList.remove("active");
-      document.getElementById("mainScreen").classList.add("active");
-    }
-
-    function refreshQR() {
-      document.getElementById("qrSourceTime").textContent = formatMinguo(new Date());
-      const container = document.getElementById("qrcode");
-      container.innerHTML = "";
-      qrInstance = new QRCode(container, {
-        text: userID,
-        width: 224,
-        height: 224,
-        colorDark: "#141024",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.M
-      });
-    }
-
-    function editID() {
-      const nextID = prompt("輸入要產生的身分證字號：", userID);
-      if (nextID && nextID.trim()) {
-        userID = nextID.trim().toUpperCase();
-        localStorage.setItem("custom_id", userID);
-      }
-    }
-
-    updateClock();
-    setInterval(updateClock, 1000);
-  </script>
-</body>
-</html>
+      color: #0b14
