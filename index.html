@@ -175,32 +175,22 @@
     }
 
     .white-label-btn {
-      width: 84%;
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.45);
-      border-radius: 12px;
-      padding: 12px 10px 10px;
+      width: 86%;
+      background: transparent;
+      border: none;
+      padding: 0;
       margin-top: 2px;
       margin-bottom: 12px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .label-serif {
-      font-family: "Songti TC", "PMingLiU", "Noto Serif TC", Georgia, serif;
-      font-size: 20px;
-      font-weight: 500;
-      color: #161616;
-      line-height: 1.42;
-      letter-spacing: 0.5px;
-    }
-    .label-serial {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang TC", sans-serif;
-      font-size: 29px;
-      font-weight: 700;
-      color: #080808;
-      line-height: 1.15;
-      margin-top: 2px;
-      letter-spacing: 0.3px;
-      font-variant-numeric: tabular-nums;
+    .label-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
     }
 
     .footer-meta {
@@ -349,9 +339,7 @@
         </div>
 
         <button class="white-label-btn" onclick="openModal()">
-          <div class="label-serif">國軍營內民用通信</div>
-          <div class="label-serif">資訊器材管制標籤</div>
-          <div class="label-serial" id="labelSerial">C229085796</div>
+          <img src="./IMG_0161.jpeg" class="label-img" alt="國軍營內民用通信資訊器材管制標籤" />
         </button>
 
         <div class="footer-meta">
