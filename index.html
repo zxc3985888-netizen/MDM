@@ -36,11 +36,11 @@
     }
     .screen.active { display: flex; }
 
-    /* 整頁使用裁切後的 IMG_0146.jpeg 當底圖 */
+    /* 整頁使用 IMG_0146.jpeg 當底圖，搭配版號參數避開舊快取 */
     .screenshot-screen {
       position: relative;
       background-color: var(--green-bg);
-      background-image: url("./IMG_0146.jpeg");
+      background-image: url("./IMG_0146.jpeg?v=99");
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
