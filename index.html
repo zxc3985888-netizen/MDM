@@ -10,7 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     :root {
-      --green-bg: #2fd602;
+      --green-bg: #32d904;
       --yellow-bg: #f6f600;
     }
     * {
@@ -40,21 +40,20 @@
     .screenshot-screen {
       position: relative;
       background-color: var(--green-bg);
-      background-image: url("./IMG_0146.jpeg?v=99");
+      background-image: url("./IMG_0146.jpeg?v=100");
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* 完整覆蓋原本截圖時間並即時跑動 */
+    /* 往上微調並用柔和遮罩蓋住原本時間，減少色塊邊界感 */
     .clock-overlay {
       position: absolute;
       left: 50%;
-      top: 53.6%;
+      top: 52.0%;
       transform: translate(-50%, -50%);
-      background: var(--green-bg);
-      padding: 8px 18px;
-      min-width: 280px;
+      padding: 10px 26px;
+      min-width: 300px;
       text-align: center;
       font-size: 29px;
       font-weight: 700;
@@ -63,6 +62,12 @@
       letter-spacing: 0.2px;
       white-space: nowrap;
       z-index: 5;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(50, 217, 4, 0.98) 55%,
+        rgba(50, 217, 4, 0.75) 78%,
+        rgba(50, 217, 4, 0) 100%
+      );
     }
 
     /* 透明點擊熱區：左上選單按鈕 */
