@@ -175,22 +175,54 @@
     }
 
     .white-label-btn {
-      width: 86%;
-      background: transparent;
-      border: none;
-      padding: 0;
+      position: relative;
+      overflow: hidden;
+      width: 88%;
+      background: #f7f7f7;
+      border: 1px solid rgba(0, 0, 0, 0.38);
+      border-radius: 13px;
+      padding: 13px 12px 11px;
       margin-top: 2px;
       margin-bottom: 12px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
     }
-    .label-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
+    .badge-svg {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      opacity: 0.28;
+      pointer-events: none;
+    }
+    .b-tl { top: 3px; left: 10px; }
+    .b-tr { top: 3px; right: 10px; }
+    .b-tm { top: 2px; left: 50%; transform: translateX(-50%); width: 42px; height: 42px; opacity: 0.18; }
+    .b-bm { bottom: 2px; left: 50%; transform: translateX(-50%); width: 42px; height: 42px; opacity: 0.18; }
+    .b-bl { bottom: 3px; left: 10px; }
+    .b-br { bottom: 3px; right: 10px; }
+
+    .label-serif {
+      position: relative;
+      z-index: 1;
+      font-family: "Songti TC", "PMingLiU", "Noto Serif TC", Georgia, serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: #111111;
+      line-height: 1.4;
+      letter-spacing: 0.6px;
+    }
+    .label-serial {
+      position: relative;
+      z-index: 1;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang TC", sans-serif;
+      font-size: 31px;
+      font-weight: 800;
+      color: #050505;
+      line-height: 1.15;
+      margin-top: 2px;
+      letter-spacing: 0.4px;
+      font-variant-numeric: tabular-nums;
     }
 
     .footer-meta {
@@ -310,6 +342,17 @@
 </head>
 <body>
 
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <g id="emblemShape" viewBox="0 0 60 60">
+        <polygon points="30,3 37,16 52,14 45,28 54,40 39,41 34,55 25,42 10,45 16,31 7,19 22,18" fill="none" stroke="#6c6659" stroke-width="2.2"/>
+        <circle cx="30" cy="29" r="13" fill="none" stroke="#6c6659" stroke-width="2"/>
+        <polygon points="30,19 32.5,26 40,26 34,30.5 36.2,37.5 30,33.2 23.8,37.5 26,30.5 20,26 27.5,26" fill="none" stroke="#53688a" stroke-width="1.6"/>
+        <circle cx="30" cy="29" r="3" fill="#53688a"/>
+      </g>
+    </defs>
+  </svg>
+
   <section id="mainScreen" class="screen green-screen active">
     <div class="topbar">
       <button class="circle-menu-btn" onclick="editID()" aria-label="選單">
@@ -339,7 +382,16 @@
         </div>
 
         <button class="white-label-btn" onclick="openModal()">
-          <img src="./IMG_0161.jpeg" class="label-img" alt="國軍營內民用通信資訊器材管制標籤" />
+          <svg class="badge-svg b-tl" viewBox="0 0 60 60"><use href="#emblemShape"/></svg>
+          <svg class="badge-svg b-tm" viewBox="0 0 60 60"><use href="#emblemShape"/></svg>
+          <svg class="badge-svg b-tr" viewBox="0 0 60 60"><use href="#emblemShape"/></svg>
+          <svg class="badge-svg b-bl" viewBox="0 0 60 60"><use href="#emblemShape"/></svg>
+          <svg class="badge-svg b-bm" viewBox="0 0 60 60"><use href="#emblemShape"/></svg>
+          <svg class="badge-svg b-br" viewBox="0 0 60 60"><use href="#emblemShape"/></svg>
+
+          <div class="label-serif">國軍營內民用通信</div>
+          <div class="label-serif">資訊器材管制標籤</div>
+          <div class="label-serial" id="labelSerial">C229085796</div>
         </button>
 
         <div class="footer-meta">
@@ -448,3 +500,4 @@
   </script>
 </body>
 </html>
+
