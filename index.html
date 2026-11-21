@@ -40,13 +40,13 @@
     .screenshot-screen {
       position: relative;
       background-color: var(--green-bg);
-      background-image: url("./IMG_0173.jpeg?v=109");
+      background-image: url("./IMG_0173.jpeg?v=110");
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* 底圖已無舊時間字跡，改為全透明背景直接疊加即時時間 */
+    /* 全透明背景直接疊加即時時間，字重加粗並微調筆畫飽滿度 */
     .clock-overlay {
       position: absolute;
       left: 50%;
@@ -55,8 +55,9 @@
       padding: 0;
       text-align: center;
       font-size: 29px;
-      font-weight: 700;
+      font-weight: 800;
       color: #0c140a;
+      -webkit-text-stroke: 0.45px #0c140a;
       font-variant-numeric: tabular-nums;
       letter-spacing: 0.2px;
       white-space: nowrap;
