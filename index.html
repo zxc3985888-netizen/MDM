@@ -10,7 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     :root {
-      --green-bg: #2cd400;
+      --green-bg: #28cc00;
       --yellow-bg: #f6f600;
     }
     * {
@@ -40,20 +40,20 @@
     .screenshot-screen {
       position: relative;
       background-color: var(--green-bg);
-      background-image: url("./IMG_0146.jpeg?v=101");
+      background-image: url("./IMG_0146.jpeg?v=102");
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* 完整覆蓋原本截圖時間並即時跑動，左右加寬避免露字 */
+    /* 緊湊覆蓋原本時間：左右加寬包住字元，上下收斂避免色塊感 */
     .clock-overlay {
       position: absolute;
       left: 50%;
       top: 52.0%;
       transform: translate(-50%, -50%);
-      padding: 10px 34px;
-      min-width: 340px;
+      padding: 5px 46px;
+      min-width: 390px;
       text-align: center;
       font-size: 29px;
       font-weight: 700;
@@ -62,11 +62,13 @@
       letter-spacing: 0.2px;
       white-space: nowrap;
       z-index: 5;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(44, 212, 0, 0.98) 62%,
-        rgba(44, 212, 0, 0.78) 82%,
-        rgba(44, 212, 0, 0) 100%
+      background: linear-gradient(
+        90deg,
+        rgba(40, 204, 0, 0) 0%,
+        rgba(40, 204, 0, 0.92) 14%,
+        rgba(40, 204, 0, 0.96) 50%,
+        rgba(40, 204, 0, 0.92) 86%,
+        rgba(40, 204, 0, 0) 100%
       );
     }
 
