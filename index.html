@@ -35,7 +35,60 @@
       padding-bottom: env(safe-area-inset-bottom);
     }
     .screen.active { display: flex; }
-    .green-screen { background: var(--green-bg); }
+
+    /* 整頁使用 IMG_0146.jpeg 當底圖 */
+    .screenshot-screen {
+      position: relative;
+      background-color: var(--green-bg);
+      background-image: url("./IMG_0146.jpeg");
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* 覆蓋原本截圖時間並即時跑動 */
+    .clock-overlay {
+      position: absolute;
+      left: 50%;
+      top: 52.2%;
+      transform: translate(-50%, -50%);
+      background: var(--green-bg);
+      padding: 4px 12px;
+      font-size: 29px;
+      font-weight: 700;
+      color: #0c140a;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      z-index: 5;
+    }
+
+    /* 透明點擊熱區：左上選單按鈕 */
+    .hotspot-menu {
+      position: absolute;
+      left: 2%;
+      top: 7.5%;
+      width: 15%;
+      height: 7%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 6;
+    }
+
+    /* 透明點擊熱區：白色管制標籤 */
+    .hotspot-label {
+      position: absolute;
+      left: 14%;
+      top: 71.5%;
+      width: 72%;
+      height: 15.5%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 6;
+    }
+
     .yellow-screen { background: var(--yellow-bg); }
 
     .topbar {
@@ -51,30 +104,6 @@
       letter-spacing: 0.2px;
       flex-shrink: 0;
     }
-    .circle-menu-btn {
-      position: absolute;
-      left: 16px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #3a3a3a 0%, #1d1d1d 100%);
-      border: 1px solid #484848;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 0;
-      cursor: pointer;
-    }
-    .circle-menu-btn span {
-      display: block;
-      width: 18px;
-      height: 2.2px;
-      background: #ffffff;
-      border-radius: 1px;
-    }
     .back-pill-btn {
       position: absolute;
       left: 14px;
@@ -87,126 +116,6 @@
       font-weight: 400;
       line-height: 1.2;
       cursor: pointer;
-    }
-
-    .ios-tag {
-      text-align: right;
-      padding: 4px 10px 0 0;
-      font-size: 12px;
-      font-weight: 400;
-      color: #162214;
-      font-variant-numeric: tabular-nums;
-      line-height: 1.2;
-    }
-    .status-sub {
-      text-align: center;
-      font-size: 14px;
-      font-weight: 500;
-      color: #162214;
-      margin-top: 2px;
-    }
-
-    .main-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 14px 10px;
-    }
-    .camp-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .camp-title {
-      font-size: 76px;
-      font-weight: 500;
-      color: #0b1409;
-      letter-spacing: 0;
-      line-height: 1.05;
-      white-space: nowrap;
-      transform: scaleY(1.06);
-    }
-
-    .lower-stack {
-      width: 100%;
-      padding: 0 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .live-clock {
-      font-size: 29px;
-      font-weight: 700;
-      color: #0c140a;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.2px;
-      margin-bottom: 12px;
-    }
-    .pill-row {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.28);
-      border-radius: 8px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 16px;
-      font-weight: 500;
-      color: #2f5761;
-      margin-bottom: 14px;
-    }
-    .dot-green {
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #259e24;
-      flex-shrink: 0;
-    }
-    .dot-red {
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #e12626;
-      flex-shrink: 0;
-    }
-
-    .white-label-btn {
-      width: 86%;
-      background: transparent;
-      border: none;
-      padding: 0;
-      margin-top: 2px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .label-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-    }
-
-    .footer-meta {
-      text-align: center;
-      font-size: 14px;
-      font-weight: 500;
-      color: #101a0e;
-      line-height: 1.38;
-      font-variant-numeric: tabular-nums;
-    }
-    .footer-warn {
-      color: #e21d1d;
-      font-size: 13px;
-      font-weight: 600;
-      margin-top: 1px;
     }
 
     .modal-backdrop {
@@ -318,45 +227,10 @@
 </head>
 <body>
 
-  <section id="mainScreen" class="screen green-screen active">
-    <div class="topbar">
-      <button class="circle-menu-btn" onclick="editID()" aria-label="選單">
-        <span></span><span></span><span></span>
-      </button>
-      <div>國軍 MDM V9.1</div>
-    </div>
-
-    <div class="ios-tag">iOS:27.2</div>
-    <div class="status-sub">已上鎖，可進入此管制營區</div>
-
-    <div class="main-body">
-      <div class="camp-wrap">
-        <div class="camp-title" id="campName">武漢營區</div>
-      </div>
-
-      <div class="lower-stack">
-        <div class="live-clock" id="liveClock">115/11/31 12:47:44</div>
-
-        <div class="pill-row">
-          <span class="dot-green"></span>
-          <span>上鎖：進入管制模式</span>
-        </div>
-        <div class="pill-row">
-          <span class="dot-red"></span>
-          <span>解鎖：離開管制模式</span>
-        </div>
-
-        <button class="white-label-btn" onclick="openModal()">
-          <img src="./IMG_0146.jpeg" class="label-img" alt="國軍營內民用通信資訊器材管制標籤" />
-        </button>
-
-        <div class="footer-meta">
-          <div>上鎖時間：<span id="lockTime">115/11/31 08:17:39</span></div>
-          <div>設定檔：<span id="configVer">V3.1 (05/10 12:33:44)</span></div>
-          <div class="footer-warn">仿冒必究</div>
-        </div>
-      </div>
-    </div>
+  <section id="mainScreen" class="screen screenshot-screen active">
+    <button class="hotspot-menu" onclick="editID()" aria-label="設定身分證字號"></button>
+    <div class="clock-overlay" id="liveClock">115/10/31 12:47:44</div>
+    <button class="hotspot-label" onclick="openModal()" aria-label="開啟管制標籤選單"></button>
   </section>
 
   <div id="actionModal" class="modal-backdrop" onclick="closeModal()">
@@ -524,3 +398,4 @@
   </script>
 </body>
 </html>
+
