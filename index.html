@@ -36,7 +36,7 @@
     }
     .screen.active { display: flex; }
 
-    /* 整頁使用 IMG_0146.jpeg 當底圖 */
+    /* 整頁使用裁切後的 IMG_0146.jpeg 當底圖 */
     .screenshot-screen {
       position: relative;
       background-color: var(--green-bg);
@@ -46,14 +46,16 @@
       background-repeat: no-repeat;
     }
 
-    /* 覆蓋原本截圖時間並即時跑動 */
+    /* 完整覆蓋原本截圖時間並即時跑動 */
     .clock-overlay {
       position: absolute;
       left: 50%;
-      top: 52.2%;
+      top: 53.6%;
       transform: translate(-50%, -50%);
       background: var(--green-bg);
-      padding: 4px 12px;
+      padding: 8px 18px;
+      min-width: 280px;
+      text-align: center;
       font-size: 29px;
       font-weight: 700;
       color: #0c140a;
@@ -67,9 +69,9 @@
     .hotspot-menu {
       position: absolute;
       left: 2%;
-      top: 7.5%;
-      width: 15%;
-      height: 7%;
+      top: 1.5%;
+      width: 16%;
+      height: 8%;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -79,10 +81,10 @@
     /* 透明點擊熱區：白色管制標籤 */
     .hotspot-label {
       position: absolute;
-      left: 14%;
-      top: 71.5%;
-      width: 72%;
-      height: 15.5%;
+      left: 13%;
+      top: 70%;
+      width: 74%;
+      height: 16.5%;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -398,4 +400,3 @@
   </script>
 </body>
 </html>
-
